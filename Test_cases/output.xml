@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.7.4 on win32)" generated="20200828 05:09:09.702" rpa="false">
+<suite id="s1" name="TC002 get specific request" source="D:\office_project\Robot_API_Automation\Test_cases\TC002_get_specific_request.robot">
+<test id="s1-t1" name="TC001_get_request">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>get_stu_id</arg>
+<arg>${base_url}</arg>
+</arguments>
+<msg timestamp="20200828 05:09:09.904" level="INFO">Creating Session using : alias=get_stu_id, url=https://Thetestingworldapi.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200828 05:09:09.903" endtime="20200828 05:09:09.904"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>get_stu_id</arg>
+<arg>api/studentsDetails/${stu_id}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20200828 05:09:10.010" level="INFO">GET Request : url=https://thetestingworldapi.com/api/studentsDetails/105 
+ path_url=/api/studentsDetails/105 
+ headers={'User-Agent': 'python-requests/2.24.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20200828 05:09:10.011" level="INFO">GET Response : url=https://thetestingworldapi.com/api/studentsDetails/105 
+ status=200, reason=OK 
+ body={"status":"true","data":{"id":105,"first_name":"Satya","middle_name":"sample string 3","last_name":"Cavisson","date_of_birth":"NA"}} 
+ </msg>
+<msg timestamp="20200828 05:09:10.011" level="INFO">c:\users\dinesh rao\anaconda3\lib\site-packages\urllib3\connectionpool.py:1004: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  InsecureRequestWarning,</msg>
+<msg timestamp="20200828 05:09:10.011" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200828 05:09:09.905" endtime="20200828 05:09:10.012"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response}</arg>
+</arguments>
+<status status="PASS" starttime="20200828 05:09:10.012" endtime="20200828 05:09:10.013"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<status status="PASS" starttime="20200828 05:09:10.013" endtime="20200828 05:09:10.014"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${str_code}</var>
+</assign>
+<msg timestamp="20200828 05:09:10.016" level="INFO">${str_code} = 200</msg>
+<status status="PASS" starttime="20200828 05:09:10.015" endtime="20200828 05:09:10.016"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${str_code}</arg>
+<arg>200</arg>
+</arguments>
+<status status="PASS" starttime="20200828 05:09:10.017" endtime="20200828 05:09:10.017"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<status status="PASS" starttime="20200828 05:09:10.018" endtime="20200828 05:09:10.018"></status>
+</kw>
+<status status="PASS" starttime="20200828 05:09:09.902" endtime="20200828 05:09:10.019" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20200828 05:09:09.705" endtime="20200828 05:09:10.021"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="TC002 get specific request">TC002 get specific request</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
